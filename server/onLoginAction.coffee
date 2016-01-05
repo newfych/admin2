@@ -1,17 +1,13 @@
 Accounts.onLogin (user) ->
-  user = user.username
-  unless Checks.findOne(username: user)
-    Checks.insert
-      username: user
-      status: true
-
-    Screens.insert
-      username: user
-      screen_name: "Main"
-
   if Meteor.isServer
-    Meteor.publish "Screens", ->
-      Screens.find username: user
+    unless Screens.find(user: user._id)
+      Screens.insert
+        user: user._id
+        screen: "main"
 
-  if Meteor.isClient
-    Meteor.subscribe "Screens"
+    Meteor.publish "Screens", ->
+      Screens.find user: user._id
+    console.log "Collections PUBLISHED (onLoginAction)"
+
+    if Meteor.isClient
+      Meteor.subscribe "Screens"

@@ -2,6 +2,9 @@
 	template: 'Admin'
 	yieldTemplates: {}
 
+	onBeforeAction: ->
+		@next()
+
 	action: ->
 		@redirect 'admin.users', @params or {}, replaceState: true
 

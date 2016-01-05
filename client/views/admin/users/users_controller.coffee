@@ -2,6 +2,9 @@
 	template: 'Admin'
 	yieldTemplates: 'AdminUsers': to: 'AdminSubcontent'
 
+	onBeforeAction: ->
+		@next()
+
 	action: ->
 		if @isReady()
 			@render()

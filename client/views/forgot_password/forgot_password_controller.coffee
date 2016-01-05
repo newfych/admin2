@@ -1,7 +1,8 @@
-@HomePublicController = RouteController.extend(
-	template: "HomePublic"
+@ForgotPasswordController = RouteController.extend(
+	template: "ForgotPassword"
 	yieldTemplates: {}
 
+#YIELD_TEMPLATES
 	onBeforeAction: ->
 		@next()
 
@@ -18,5 +19,13 @@
 		ready = true
 		_.each subs, (sub) ->
 			ready = false  unless sub.ready()
+
 		ready
+
+	data: ->
+		params: @params or {}
+
+
+#DATA_FUNCTION
+	onAfterAction: ->
 )

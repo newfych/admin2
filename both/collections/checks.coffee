@@ -1,1 +1,0 @@
-@Checks = new Mongo.Collection("checks")
