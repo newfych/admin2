@@ -166,6 +166,7 @@ Template.Login.events({
 			}
 		);
 
+
 		return false;
 	},
 
